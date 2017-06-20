@@ -15,11 +15,14 @@ class Edge
     @from_vertex = from_vertex
     @to_vertex = to_vertex
     @cost = cost
-    @from_vertex.in_edges.push(self)
     @from_vertex.out_edges.push(self)
+    @to_vertex.in_edges.push(self)
   end
 
   def destroy!
-
+    @from_vertex.out_edges.delete(self)
+    @to_vertex.in_edges.delete(self)
+    @from_vertex = nil
+    @to_vertex = nil
   end
 end
