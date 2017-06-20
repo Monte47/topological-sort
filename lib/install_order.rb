@@ -14,8 +14,11 @@ def install_order(arr)
   sorted = []
   queue = []
 
+  max = 0
+
   arr.each do |vertex|
     queue << vertex
+    max = vertex[0] if max < vertex[0]
   end
 
 
@@ -25,8 +28,10 @@ def install_order(arr)
     queue << current[1] unless sorted.include?(current[1])
   end
 
-  sorted << 8
-  sorted << 7
+  (0..max).each do |num|
+    sorted.unshift(num) unless sorted.include?(num)
+  end
+
   sorted
 
 end
