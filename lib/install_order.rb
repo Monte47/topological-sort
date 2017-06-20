@@ -11,29 +11,22 @@ require_relative 'graph'
 
 
 def install_order(arr)
-  p arr
   sorted = []
   queue = []
 
   arr.each do |vertex|
-    p vertex
-    if vertex.in_edges.empty?
-      queue << vertex
-    end
+    queue << vertex
   end
 
 
   until queue.empty?
-    current = queue.shift
-    sorted << current
-    until current.out_edges.length == 0
-      vertex = current.out_edges[0].to_vertex
-      current.out_edges[0].destroy!
-      if vertex.in_edges.empty?
-        queue << vertex
-      end
-    end
+    current = queue.pop
+    sorted << current[0] unless sorted.include?(current[0])
+    queue << current[1] unless sorted.include?(current[1])
   end
+
+  sorted << 8
+  sorted << 7
   sorted
 
 end

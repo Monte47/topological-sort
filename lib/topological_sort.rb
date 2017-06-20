@@ -29,3 +29,25 @@ def topological_sort(vertices)
   sorted
 
 end
+
+# def topological_sort
+#   sorted = []
+#   seen = []
+#
+#   vertices.each do |vertex|
+#     depth_first_search(vertex, seen, sorted) unless seen.include?(vertex)
+#   end
+#
+#   sorted
+# end
+
+# def depth_first_search(vertex, seen, sorted)
+#   seen.add(vertex)
+#
+#   vertex.out_edges.each do |e|
+#     new_vertex = e.to_vertex
+#     dfs!(new_vertex, seen, sorted) unless seen.include?(new_vertex)
+#   end
+#
+#   sorted.unshift(vertex)
+# end
